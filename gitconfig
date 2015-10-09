@@ -3,13 +3,23 @@
 	email = XXX@example.com
 [core]
 	excludesfile = /home/XXX/.gitignore
+	
 [alias]
     mybranch = rev-parse --abbrev-ref HEAD
     myb = rev-parse --abbrev-ref HEAD
-    fp = "!sh -c 'git fetch XXX_remote1 \"$0\" && git pull XXX_remote1 \"$0\"'"
-    fpg = "!sh -c 'git fetch XXX_remote2 `git mybranch` && git pull XXX_remote2 `git mybranch`'"
     co = checkout
     cob = checkout -b
-    pushit = "!sh -c 'git push XXX_remote1 `git mybranch`'"
-    pushitg = "!sh -c 'git push XXX_remote2 `git mybranch`'"
+    pushit = "!sh -c 'git push origin `git mybranch`'"
+    shipit =  "!sh -c 'git push origin `git mybranch`'"
+    fp = "!sh -c 'git fetch && git pull'"
+    krusty = "!sh -c 'git checkout master && git pull && git checkout - && git rebase origin/master'"
 
+
+[credential "https://github.com"]
+	username = edyesed
+[filter "hawser"]
+	clean = git hawser clean %f
+	smudge = git hawser smudge %f
+	required = true
+[push]
+	default = simple
